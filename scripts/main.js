@@ -1,55 +1,96 @@
-console.log("Welcome to the main module");
+let favoriteSandwich = "Rueben";
 
-var GoodSandwich;
-
-GoodSandwich = "pb&j";
-
-var BadSandwich = {
-  name: "Baloney Sandwich",
-  price: 5.21,
-  ingredients: ["bread", "baloney", "mustard"],
+let leastFavoriteSandwich = {
+  sandwichName: "Mud sandwich",
+  price: 11.99,
+  ingredients: ["bread", "mud", "mustard"],
 };
 
-console.log(BadSandwich.ingredients[0]);
+console.log(leastFavoriteSandwich.ingredients[0]);
 
 let menu = [
   {
-    name: "Baloney Sandwich",
-    price: 19.99,
-    ingredients: ["bread", "baloney", "mustard"],
+    sandwichName: "Tomato sandwich",
+    price: 6.99,
+    ingredients: ["bread", "mayo", "tomato", "salt and pepper"],
   },
+  leastFavoriteSandwich,
   {
-    name: "Tomato Sandwich",
-    price: 7.5,
-    ingredients: ["bread", "Tomato", "mustard"],
-  },
-  {
-    name: "Mud Sandwich",
-    price: 4.99,
-    ingredients: ["bread", "mud", "mustard"],
+    sandwichName: "Rueben",
+    price: 9.99,
+    ingredients: [
+      "bread",
+      "corned beef",
+      "saurkraut",
+      "thousand island dressing",
+    ],
   },
 ];
 
-for (let i = 0; i < menu.length; i++) {
-  console.log("this is i", i);
-  console.log(menu[i].name);
-}
+// let ruebenIngredients = menu[2].ingredients;
+// console.log("this is rueben ingredietns", ruebenIngredients)
+// // Loop through ingredients for just a rueben
+// for(let i = 0; i < ruebenIngredients.length; i++){
+//     console.log(ruebenIngredients[i])
+// }
 
-let arraylengthofTomatoIngredients;
+// // Loop through all the sandwiches
+// for(let i = 0; i < menu.length; i++){
+//     console.log("this is i", i)
+//     console.log(menu[i].sandwichName)
+//     // console.log(menu[i].ingredients)
+//     for(let j = 0; j < menu[i].ingredients.length; j++){
+//         console.log(menu[i].ingredients[j])
+//     }
+// }
 
-for (let i = 0; i < arraylengthofTomatoIngredients; i++) {
-  console.log("this is i", i);
-  console.log(menu[1].ingredients[i]);
-}
+// console.log(menu[2].sandwichName)
+// console.log(menu[2].ingredients[1]) // corned beef
 
-console.log(menu[(2, 0)]);
+// for(let i = 0; i < menu.length; i++){
+//     if(menu[i].sandwichName === favoriteSandwich){
+//         console.log("CHEF'S CHOICE", menu[i].sandwichName)
+//     } else {
+//         console.log(menu[i].sandwichName)
+//     }
 
-console.log("BREAK");
+// }
 
-for (let i = 0; i < menu.length; i++) {
-  if (menu[i].price < 10) {
-    console.log("SALE", menu[i].name);
-  } else {
-    console.log(menu[i].name);
+// for (let i = 0; i < menu.length; i++) {
+//   if (menu[i].price < 10) {
+//     console.log(`SALE ${menu[i].sandwichName} - ${menu[i].price}`);
+//   } else {
+//     console.log(menu[i].sandwichName);
+//   }
+// }
+
+// Write a function that takes in the name of my franchise owner and returns an array of menu items with that person's name tacked onto the beginning
+
+function createFranchiseMenu(franchiseOwnerName) {
+  let franchiseMenuArray = [];
+  console.log("This franchise belongs to:", franchiseOwnerName);
+  //Loop over the menu array
+  for (let i = 0; i < menu.length; i++) {
+    // Modify every sandwich name to include the franchise owner's name
+    let currentSandwichObject = menu[i];
+    let currentSandwichName = currentSandwichObject.sandwichName;
+    // Object for new sandwich menu
+    let newSandwich = {
+      sandwichName: `${franchiseOwnerName}'s ${currentSandwichName}`
+    }
+    // Push it into the new franchise menu
+    franchiseMenuArray.push(newSandwich)
   }
+
+//   console.log(franchiseMenuArray)
+  return franchiseMenuArray;
 }
+
+
+// Call the function
+let vincentMenu = createFranchiseMenu("Vincent");
+let angieMenu = createFranchiseMenu("Angie");
+let mandyMenu = createFranchiseMenu("Mandy");
+let thomasMenu = createFranchiseMenu("Thomas");
+
+console.log(vincentMenu)
